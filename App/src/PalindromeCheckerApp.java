@@ -1,5 +1,16 @@
 
 
+
+import java.util.*;
+
+interface PalindromeStrategy {
+    boolean check(String input);
+}
+
+class StackStrategy implements PalindromeStrategy {
+
+
+
 import java.util.*;
 
 
@@ -15,6 +26,43 @@ public class PalindromeCheckerApp {
 public class PalindromeCheckerApp {
 
 
+    public boolean check(String input) {
+
+
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+class DequeStrategy implements PalindromeStrategy {
+
+    public boolean check(String input) {
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char c : input.toCharArray()) {
+            deque.add(c);
+        }
+
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+                return false;
+            }
+        }
+
+        return true;
+    }
 class PalindromeService {
 
 
@@ -76,6 +124,7 @@ public class PalindromeCheckerApp {
         return true;
     }
 
+
 }
 
 public class PalindromeCheckerApp {
@@ -86,12 +135,19 @@ public class PalindromeCheckerApp {
         System.out.print("Input: ");
         String input = sc.nextLine();
 
+
+        PalindromeStrategy strategy = new StackStrategy();
+        boolean result = strategy.check(input);
+
         PalindromeService service = new PalindromeService();
         boolean result = service.checkPalindrome(input);
+
 
         System.out.println("Is Palindrome? : " + result);
 
         sc.close();
+
+
 
 
     public static boolean recursiveCheck(String input, int start, int end) {
@@ -126,6 +182,7 @@ public class PalindromeCheckerApp {
 
         System.out.println("Input text: " + str);
         System.out.println("Is it a Palindrome: " + isPalindrome);
+
 
 
     }
