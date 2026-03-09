@@ -1,5 +1,11 @@
 
 
+import java.util.*;
+
+public class PalindromeCheckerApp {
+
+
+
 
 import java.util.*;
 
@@ -23,6 +29,17 @@ public class PalindromeCheckerApp {
         String input = sc.nextLine();
 
 
+    public static boolean twoPointerCheck(String input) {
+        int start = 0;
+        int end = input.length() - 1;
+
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end))
+                return false;
+            start++;
+            end--;
+
 public class PalindromeCheckerApp {
 
 
@@ -39,10 +56,12 @@ public class PalindromeCheckerApp {
             if (c != stack.pop()) {
                 return false;
             }
+
         }
 
         return true;
     }
+
 }
 
 class DequeStrategy implements PalindromeStrategy {
@@ -150,6 +169,7 @@ public class PalindromeCheckerApp {
 
 
 
+
     public static boolean recursiveCheck(String input, int start, int end) {
         if (start >= end)
             return true;
@@ -163,8 +183,16 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Input: ");
+        String input = sc.nextLine();
+
+
+    public static void main(String[] args) {
+
         String str = "madam";
         boolean isPalindrome = true;
+
 
         long start1 = System.nanoTime();
         boolean result1 = twoPointerCheck(input);
@@ -180,8 +208,12 @@ public class PalindromeCheckerApp {
         System.out.println("Recursive Result: " + result2);
         System.out.println("Execution Time: " + (end2 - start2) + " ns");
 
+
+        sc.close();
+
         System.out.println("Input text: " + str);
         System.out.println("Is it a Palindrome: " + isPalindrome);
+
 
 
 
