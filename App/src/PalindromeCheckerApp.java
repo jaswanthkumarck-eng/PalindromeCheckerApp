@@ -1,10 +1,19 @@
+
+
+import java.util.*;
+
+public class PalindromeCheckerApp {
+    public static void main(String[] args) {
+
+        String input = "refer";
+
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Stack;
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-
+        Deque<Character> deque = new ArrayDeque<>();
 
         String input = "civic";
 
@@ -16,6 +25,10 @@ public class PalindromeCheckerApp {
             queue.add(c);
             stack.push(c);
 
+
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
+
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a string to check if it is a palindrome: ");
         String originalString = scanner.nextLine();
@@ -23,13 +36,19 @@ public class PalindromeCheckerApp {
         for (int i = originalString.length() - 1; i >= 0; i--) {
             reversedString = reversedString + originalString.charAt(i);
 
+
         }
 
         boolean isPalindrome = true;
 
 
+
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+
         while (!queue.isEmpty()) {
             if (queue.remove() != stack.pop()) {
+
                 isPalindrome = false;
                 break;
             }
